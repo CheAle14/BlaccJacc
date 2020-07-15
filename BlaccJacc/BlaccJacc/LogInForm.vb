@@ -3,7 +3,7 @@
         QuitTheGame()
     End Sub
 
-    Private Sub QuitTheGame()
+    Public Sub QuitTheGame()
         'make a confirmation form to fit the design instead of a vbYEsNo box
         MainMenu.SaveToFile()
         'if confirmation yes

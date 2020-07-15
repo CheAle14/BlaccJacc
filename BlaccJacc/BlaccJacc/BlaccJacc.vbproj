@@ -73,6 +73,13 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CardMaker.vb" />
+    <Compile Include="Game Form.Designer.vb">
+      <DependentUpon>Game Form.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Game Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="LogInForm.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +134,9 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mian menu cards.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

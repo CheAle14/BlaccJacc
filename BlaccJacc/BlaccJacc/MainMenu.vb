@@ -36,4 +36,16 @@ Public Class MainMenu
         Next
         System.IO.File.WriteAllText("scores.txt", contents)
     End Sub
+
+    Private Sub MainMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        LBLWelcome.Text = "Hello, " & CurrentUser & " welcome to black jack!" & vbNewLine & "You have " & Score & " bills in your account"
+    End Sub
+
+    Private Sub CMDQuit_Click(sender As Object, e As EventArgs) Handles CMDQuit.Click
+        LogIn.QuitTheGame()
+    End Sub
+
+    Private Sub LBLWelcome_Click(sender As Object, e As EventArgs) Handles LBLWelcome.Click
+
+    End Sub
 End Class
