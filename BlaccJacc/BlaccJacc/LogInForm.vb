@@ -16,9 +16,6 @@
         For Each keypair In MainMenu.UserDetails
             LBLUserList.Items.Add(keypair.Key)
         Next
-        If Not MainMenu.UserDetails.ContainsKey(Environment.UserName) Then
-            LBLUserList.Items.Add(Environment.UserName)
-        End If
     End Sub
 
     Private Sub LBLUserList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles LBLUserList.SelectedIndexChanged
