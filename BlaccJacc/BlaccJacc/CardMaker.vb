@@ -73,7 +73,7 @@
             End If
 
         ElseIf CurrentNumber = 10 Then
-            CurrentCard.Number = 13
+            CurrentCard.Number = 10 'set to 10 so later it can be changed to either 10 or 1 based of the users decision
             CurrentCard.Type = "A"
             CurrentCard.imagecode = "_AH"
 
@@ -85,26 +85,206 @@
             ElseIf CurrentNumber = 12 Then
                 CurrentCard.Type = "Q"
                 CurrentCard.imagecode = "_QH"
-                CurrentCard.Number = 11
+                CurrentCard.Number = 10
             ElseIf CurrentNumber = 13 Then
                 CurrentCard.Type = "K"
                 CurrentCard.imagecode = "_KH"
-                CurrentCard.Number = 12
+                CurrentCard.Number = 10
             End If
         End If
         Return CurrentCard
     End Function
 
     Private Function CreateDiamonds(CurrentCard)
+        CurrentCard.Suit = "D"
+        If CurrentNumber >= 1 And CurrentNumber < 10 Then
+            If CurrentNumber = 1 Then
+                CurrentCard.Number = 1
+                CurrentCard.Type = "2"
+                CurrentCard.imagecode = "_2D"
+            ElseIf CurrentNumber = 2 Then
+                CurrentCard.Number = 2
+                CurrentCard.Type = "3"
+                CurrentCard.imagecode = "_3D"
+            ElseIf CurrentNumber = 3 Then
+                CurrentCard.Number = 3
+                CurrentCard.Type = "4"
+                CurrentCard.imagecode = "_4D"
+            ElseIf CurrentNumber = 4 Then
+                CurrentCard.Number = 4
+                CurrentCard.Type = "5"
+                CurrentCard.imagecode = "_5D"
+            ElseIf CurrentNumber = 5 Then
+                CurrentCard.Number = 5
+                CurrentCard.Type = "6"
+                CurrentCard.imagecode = "_6D"
+            ElseIf CurrentNumber = 6 Then
+                CurrentCard.Number = 6
+                CurrentCard.Type = "7"
+                CurrentCard.imagecode = "_7D"
+            ElseIf CurrentNumber = 7 Then
+                CurrentCard.Number = 7
+                CurrentCard.Type = "8"
+                CurrentCard.imagecode = "_8D"
+            ElseIf CurrentNumber = 8 Then
+                CurrentCard.Number = 8
+                CurrentCard.Type = "9"
+                CurrentCard.imagecode = "_9D"
+            ElseIf CurrentNumber = 9 Then
+                CurrentCard.Number = 9
+                CurrentCard.Type = "10"
+                CurrentCard.imagecode = "_10D"
+            End If
 
+        ElseIf CurrentNumber = 10 Then
+            CurrentCard.Number = 10 'set to 10 so later it can be changed to either 10 or 1 based of the users decision
+            CurrentCard.Type = "A"
+            CurrentCard.imagecode = "_AD"
+
+        ElseIf CurrentNumber > 10 And CurrentNumber <= 13 Then
+            If CurrentNumber = 11 Then
+                CurrentCard.Type = "J"
+                CurrentCard.imagecode = "_JD"
+                CurrentCard.Number = 10
+            ElseIf CurrentNumber = 12 Then
+                CurrentCard.Type = "Q"
+                CurrentCard.imagecode = "_QD"
+                CurrentCard.Number = 10
+            ElseIf CurrentNumber = 13 Then
+                CurrentCard.Type = "K"
+                CurrentCard.imagecode = "_KD"
+                CurrentCard.Number = 10
+            End If
+        End If
+        Return CurrentCard
     End Function
 
     Private Function CreateSpades(CurrentCard)
+        CurrentCard.Suit = "S"
+        If CurrentNumber >= 1 And CurrentNumber < 10 Then
+            If CurrentNumber = 1 Then
+                CurrentCard.Number = 1
+                CurrentCard.Type = "2"
+                CurrentCard.imagecode = "_2S"
+            ElseIf CurrentNumber = 2 Then
+                CurrentCard.Number = 2
+                CurrentCard.Type = "3"
+                CurrentCard.imagecode = "_3S"
+            ElseIf CurrentNumber = 3 Then
+                CurrentCard.Number = 3
+                CurrentCard.Type = "4"
+                CurrentCard.imagecode = "_4S"
+            ElseIf CurrentNumber = 4 Then
+                CurrentCard.Number = 4
+                CurrentCard.Type = "5"
+                CurrentCard.imagecode = "_5S"
+            ElseIf CurrentNumber = 5 Then
+                CurrentCard.Number = 5
+                CurrentCard.Type = "6"
+                CurrentCard.imagecode = "_6S"
+            ElseIf CurrentNumber = 6 Then
+                CurrentCard.Number = 6
+                CurrentCard.Type = "7"
+                CurrentCard.imagecode = "_7S"
+            ElseIf CurrentNumber = 7 Then
+                CurrentCard.Number = 7
+                CurrentCard.Type = "8"
+                CurrentCard.imagecode = "_8S"
+            ElseIf CurrentNumber = 8 Then
+                CurrentCard.Number = 8
+                CurrentCard.Type = "9"
+                CurrentCard.imagecode = "_9S"
+            ElseIf CurrentNumber = 9 Then
+                CurrentCard.Number = 9
+                CurrentCard.Type = "10"
+                CurrentCard.imagecode = "_10S"
+            End If
 
+        ElseIf CurrentNumber = 10 Then
+            CurrentCard.Number = 10 'set to 10 so later it can be changed to either 10 or 1 based of the users decision
+            CurrentCard.Type = "A"
+            CurrentCard.imagecode = "_AS"
+
+        ElseIf CurrentNumber > 10 And CurrentNumber <= 13 Then
+            If CurrentNumber = 11 Then
+                CurrentCard.Type = "J"
+                CurrentCard.imagecode = "_JS"
+                CurrentCard.Number = 10
+            ElseIf CurrentNumber = 12 Then
+                CurrentCard.Type = "Q"
+                CurrentCard.imagecode = "_QS"
+                CurrentCard.Number = 10
+            ElseIf CurrentNumber = 13 Then
+                CurrentCard.Type = "K"
+                CurrentCard.imagecode = "_KS"
+                CurrentCard.Number = 10
+            End If
+        End If
+        Return CurrentCard
     End Function
 
     Private Function CreateClubs(CurrentCard)
+        CurrentCard.Suit = "C"
+        If CurrentNumber >= 1 And CurrentNumber < 10 Then
+            If CurrentNumber = 1 Then
+                CurrentCard.Number = 1
+                CurrentCard.Type = "2"
+                CurrentCard.imagecode = "_2C"
+            ElseIf CurrentNumber = 2 Then
+                CurrentCard.Number = 2
+                CurrentCard.Type = "3"
+                CurrentCard.imagecode = "_3C"
+            ElseIf CurrentNumber = 3 Then
+                CurrentCard.Number = 3
+                CurrentCard.Type = "4"
+                CurrentCard.imagecode = "_4C"
+            ElseIf CurrentNumber = 4 Then
+                CurrentCard.Number = 4
+                CurrentCard.Type = "5"
+                CurrentCard.imagecode = "_5C"
+            ElseIf CurrentNumber = 5 Then
+                CurrentCard.Number = 5
+                CurrentCard.Type = "6"
+                CurrentCard.imagecode = "_6C"
+            ElseIf CurrentNumber = 6 Then
+                CurrentCard.Number = 6
+                CurrentCard.Type = "7"
+                CurrentCard.imagecode = "_7C"
+            ElseIf CurrentNumber = 7 Then
+                CurrentCard.Number = 7
+                CurrentCard.Type = "8"
+                CurrentCard.imagecode = "_8C"
+            ElseIf CurrentNumber = 8 Then
+                CurrentCard.Number = 8
+                CurrentCard.Type = "9"
+                CurrentCard.imagecode = "_9C"
+            ElseIf CurrentNumber = 9 Then
+                CurrentCard.Number = 9
+                CurrentCard.Type = "10"
+                CurrentCard.imagecode = "_10C"
+            End If
 
+        ElseIf CurrentNumber = 10 Then
+            CurrentCard.Number = 10 'set to 10 so later it can be changed to either 10 or 1 based of the users decision
+            CurrentCard.Type = "A"
+            CurrentCard.imagecode = "_AC"
+
+        ElseIf CurrentNumber > 10 And CurrentNumber <= 13 Then
+            If CurrentNumber = 11 Then
+                CurrentCard.Type = "J"
+                CurrentCard.imagecode = "_JC"
+                CurrentCard.Number = 10
+            ElseIf CurrentNumber = 12 Then
+                CurrentCard.Type = "Q"
+                CurrentCard.imagecode = "_QC"
+                CurrentCard.Number = 10
+            ElseIf CurrentNumber = 13 Then
+                CurrentCard.Type = "K"
+                CurrentCard.imagecode = "_KC"
+                CurrentCard.Number = 10
+            End If
+        End If
+        Return CurrentCard
     End Function
 End Class
 
