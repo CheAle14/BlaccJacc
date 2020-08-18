@@ -45,7 +45,14 @@ Public Class MainMenu
         LogIn.QuitTheGame()
     End Sub
 
-    Private Sub LBLWelcome_Click(sender As Object, e As EventArgs) Handles LBLWelcome.Click
+    Public usedNums As New List(Of Integer)
+    Public RandomGen As New Random
+    Public CurrentNumber As Integer
+    Public CardPile As New Stack(Of Card)
 
+    Private Sub CMDPlay_Click(sender As Object, e As EventArgs) Handles CMDPlay.Click
+        Card.GenCards(CardPile, CurrentNumber, RandomGen, usedNums)
+        Game_Form.Show()
+        Me.Hide()
     End Sub
 End Class

@@ -110,6 +110,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Game Form.resx">
+      <DependentUpon>Game Form.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LogInForm.resx">
       <DependentUpon>LogInForm.vb</DependentUpon>
     </EmbeddedResource>

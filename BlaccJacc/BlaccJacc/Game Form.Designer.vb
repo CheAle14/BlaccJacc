@@ -22,9 +22,28 @@ Partial Class Game_Form
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        components = New System.ComponentModel.Container
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.SuspendLayout()
+        '
+        'ListBox1
+        '
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.Location = New System.Drawing.Point(21, 12)
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.Size = New System.Drawing.Size(721, 407)
+        Me.ListBox1.TabIndex = 0
+        '
+        'Game_Form
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.ListBox1)
+        Me.Name = "Game_Form"
         Me.Text = "Game_Form"
+        Me.ResumeLayout(False)
+
     End Sub
+
+    Friend WithEvents ListBox1 As ListBox
 End Class

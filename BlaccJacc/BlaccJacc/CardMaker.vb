@@ -5,12 +5,10 @@
     Public imagecode As String
     'generate 52 cards 
 
-    Dim usedNums As List(Of Integer)
-    Dim RandomGen As New Random
-    Dim CurrentNumber As Integer
+    Shared CurrentCard As New Card
 
-    Public Function GenCards()
-        For x = 1 To 52
+    Public Shared Function GenCards(CardPile, CurrentNumber, RandomGen, usedNums) 'call to get a new pile of cards
+        For x = 1 To 51
             CurrentNumber = RandomGen.Next(1, 52) 'generate a random number to turn into a card, this creates an already shuffled deck
             If usedNums.Contains(CurrentNumber) Then 'make sure the number hasnt been used already
                 While usedNums.Contains(CurrentNumber) 'repeat untill a new number has been gotten
@@ -18,20 +16,22 @@
                 End While
             End If
             usedNums.Add(CurrentNumber) 'add the random number to the list of used numbers
-            Dim CurrentCard As Card
+
             If CurrentNumber >= 1 And CurrentNumber <= 13 Then 'uses an if to decide what suit the card will be based off the number
-                CreateHearts(CurrentCard) 'call the function to generate hearts
+                CreateHearts(CurrentCard, CardPile, CurrentNumber, RandomGen, usedNums) 'call the function to generate hearts
             ElseIf CurrentNumber >= 14 And CurrentNumber <= 26 Then
-                CreateDiamonds(CurrentCard) 'call the function to generate diamonds
+                CreateDiamonds(CurrentCard, CardPile, CurrentNumber, RandomGen, usedNums) 'call the function to generate diamonds
             ElseIf CurrentNumber >= 27 And CurrentNumber <= 39 Then
-                CreateSpades(CurrentCard) 'call the function to generate spades
+                CreateSpades(CurrentCard, CardPile, CurrentNumber, RandomGen, usedNums) 'call the function to generate spades
             ElseIf CurrentNumber >= 40 And CurrentNumber <= 52 Then
-                CreateClubs(CurrentCard) 'call the function to generate clubs
+                CreateClubs(CurrentCard, CardPile, CurrentNumber, RandomGen, usedNums) 'call the function to generate clubs
             End If
+            Game_Form.ListBox1.Items.Add(CardPile.pop.Type)
         Next
+        Return CardPile
     End Function
 
-    Private Function CreateHearts(CurrentCard)
+    Private Shared Function CreateHearts(CurrentCard, CardPile, CurrentNumber, RandomGen, usedNums)
         CurrentCard.Suit = "H"
         If CurrentNumber >= 1 And CurrentNumber < 10 Then
             If CurrentNumber = 1 Then
@@ -92,199 +92,208 @@
                 CurrentCard.Number = 10
             End If
         End If
+        createPile(CurrentCard, CardPile, CurrentNumber, RandomGen, usedNums)
         Return CurrentCard
     End Function
 
-    Private Function CreateDiamonds(CurrentCard)
+    Private Shared Function CreateDiamonds(CurrentCard, CardPile, CurrentNumber, RandomGen, usedNums)
         CurrentCard.Suit = "D"
-        If CurrentNumber >= 1 And CurrentNumber < 10 Then
-            If CurrentNumber = 1 Then
+        If CurrentNumber >= 14 And CurrentNumber <= 22 Then
+            If CurrentNumber = 14 Then
                 CurrentCard.Number = 1
                 CurrentCard.Type = "2"
                 CurrentCard.imagecode = "_2D"
-            ElseIf CurrentNumber = 2 Then
+            ElseIf CurrentNumber = 15 Then
                 CurrentCard.Number = 2
                 CurrentCard.Type = "3"
                 CurrentCard.imagecode = "_3D"
-            ElseIf CurrentNumber = 3 Then
+            ElseIf CurrentNumber = 16 Then
                 CurrentCard.Number = 3
                 CurrentCard.Type = "4"
                 CurrentCard.imagecode = "_4D"
-            ElseIf CurrentNumber = 4 Then
+            ElseIf CurrentNumber = 17 Then
                 CurrentCard.Number = 4
                 CurrentCard.Type = "5"
                 CurrentCard.imagecode = "_5D"
-            ElseIf CurrentNumber = 5 Then
+            ElseIf CurrentNumber = 18 Then
                 CurrentCard.Number = 5
                 CurrentCard.Type = "6"
                 CurrentCard.imagecode = "_6D"
-            ElseIf CurrentNumber = 6 Then
+            ElseIf CurrentNumber = 19 Then
                 CurrentCard.Number = 6
                 CurrentCard.Type = "7"
                 CurrentCard.imagecode = "_7D"
-            ElseIf CurrentNumber = 7 Then
+            ElseIf CurrentNumber = 20 Then
                 CurrentCard.Number = 7
                 CurrentCard.Type = "8"
                 CurrentCard.imagecode = "_8D"
-            ElseIf CurrentNumber = 8 Then
+            ElseIf CurrentNumber = 21 Then
                 CurrentCard.Number = 8
                 CurrentCard.Type = "9"
                 CurrentCard.imagecode = "_9D"
-            ElseIf CurrentNumber = 9 Then
+            ElseIf CurrentNumber = 22 Then
                 CurrentCard.Number = 9
                 CurrentCard.Type = "10"
                 CurrentCard.imagecode = "_10D"
             End If
 
-        ElseIf CurrentNumber = 10 Then
+        ElseIf CurrentNumber = 23 Then
             CurrentCard.Number = 10 'set to 10 so later it can be changed to either 10 or 1 based of the users decision
             CurrentCard.Type = "A"
             CurrentCard.imagecode = "_AD"
 
-        ElseIf CurrentNumber > 10 And CurrentNumber <= 13 Then
-            If CurrentNumber = 11 Then
+        ElseIf CurrentNumber >= 24 And CurrentNumber <= 26 Then
+            If CurrentNumber = 24 Then
                 CurrentCard.Type = "J"
                 CurrentCard.imagecode = "_JD"
                 CurrentCard.Number = 10
-            ElseIf CurrentNumber = 12 Then
+            ElseIf CurrentNumber = 25 Then
                 CurrentCard.Type = "Q"
                 CurrentCard.imagecode = "_QD"
                 CurrentCard.Number = 10
-            ElseIf CurrentNumber = 13 Then
+            ElseIf CurrentNumber = 26 Then
                 CurrentCard.Type = "K"
                 CurrentCard.imagecode = "_KD"
                 CurrentCard.Number = 10
             End If
         End If
+        createPile(CurrentCard, CardPile, CurrentNumber, RandomGen, usedNums)
         Return CurrentCard
     End Function
 
-    Private Function CreateSpades(CurrentCard)
+    Private Shared Function CreateSpades(CurrentCard, CardPile, CurrentNumber, RandomGen, usedNums)
         CurrentCard.Suit = "S"
-        If CurrentNumber >= 1 And CurrentNumber < 10 Then
-            If CurrentNumber = 1 Then
+        If CurrentNumber >= 27 And CurrentNumber <= 35 Then
+            If CurrentNumber = 27 Then
                 CurrentCard.Number = 1
                 CurrentCard.Type = "2"
                 CurrentCard.imagecode = "_2S"
-            ElseIf CurrentNumber = 2 Then
+            ElseIf CurrentNumber = 28 Then
                 CurrentCard.Number = 2
                 CurrentCard.Type = "3"
                 CurrentCard.imagecode = "_3S"
-            ElseIf CurrentNumber = 3 Then
+            ElseIf CurrentNumber = 29 Then
                 CurrentCard.Number = 3
                 CurrentCard.Type = "4"
                 CurrentCard.imagecode = "_4S"
-            ElseIf CurrentNumber = 4 Then
+            ElseIf CurrentNumber = 30 Then
                 CurrentCard.Number = 4
                 CurrentCard.Type = "5"
                 CurrentCard.imagecode = "_5S"
-            ElseIf CurrentNumber = 5 Then
+            ElseIf CurrentNumber = 31 Then
                 CurrentCard.Number = 5
                 CurrentCard.Type = "6"
                 CurrentCard.imagecode = "_6S"
-            ElseIf CurrentNumber = 6 Then
+            ElseIf CurrentNumber = 32 Then
                 CurrentCard.Number = 6
                 CurrentCard.Type = "7"
                 CurrentCard.imagecode = "_7S"
-            ElseIf CurrentNumber = 7 Then
+            ElseIf CurrentNumber = 33 Then
                 CurrentCard.Number = 7
                 CurrentCard.Type = "8"
                 CurrentCard.imagecode = "_8S"
-            ElseIf CurrentNumber = 8 Then
+            ElseIf CurrentNumber = 34 Then
                 CurrentCard.Number = 8
                 CurrentCard.Type = "9"
                 CurrentCard.imagecode = "_9S"
-            ElseIf CurrentNumber = 9 Then
+            ElseIf CurrentNumber = 35 Then
                 CurrentCard.Number = 9
                 CurrentCard.Type = "10"
                 CurrentCard.imagecode = "_10S"
             End If
 
-        ElseIf CurrentNumber = 10 Then
+        ElseIf CurrentNumber = 36 Then
             CurrentCard.Number = 10 'set to 10 so later it can be changed to either 10 or 1 based of the users decision
             CurrentCard.Type = "A"
             CurrentCard.imagecode = "_AS"
 
-        ElseIf CurrentNumber > 10 And CurrentNumber <= 13 Then
-            If CurrentNumber = 11 Then
+        ElseIf CurrentNumber >= 37 And CurrentNumber <= 39 Then
+            If CurrentNumber = 37 Then
                 CurrentCard.Type = "J"
                 CurrentCard.imagecode = "_JS"
                 CurrentCard.Number = 10
-            ElseIf CurrentNumber = 12 Then
+            ElseIf CurrentNumber = 38 Then
                 CurrentCard.Type = "Q"
                 CurrentCard.imagecode = "_QS"
                 CurrentCard.Number = 10
-            ElseIf CurrentNumber = 13 Then
+            ElseIf CurrentNumber = 39 Then
                 CurrentCard.Type = "K"
                 CurrentCard.imagecode = "_KS"
                 CurrentCard.Number = 10
             End If
         End If
+        createPile(CurrentCard, CardPile, CurrentNumber, RandomGen, usedNums)
         Return CurrentCard
     End Function
 
-    Private Function CreateClubs(CurrentCard)
+    Private Shared Function CreateClubs(CurrentCard, CardPile, CurrentNumber, RandomGen, usedNums)
         CurrentCard.Suit = "C"
-        If CurrentNumber >= 1 And CurrentNumber < 10 Then
-            If CurrentNumber = 1 Then
+        If CurrentNumber >= 40 And CurrentNumber <= 48 Then
+            If CurrentNumber = 40 Then
                 CurrentCard.Number = 1
                 CurrentCard.Type = "2"
                 CurrentCard.imagecode = "_2C"
-            ElseIf CurrentNumber = 2 Then
+            ElseIf CurrentNumber = 41 Then
                 CurrentCard.Number = 2
                 CurrentCard.Type = "3"
                 CurrentCard.imagecode = "_3C"
-            ElseIf CurrentNumber = 3 Then
+            ElseIf CurrentNumber = 42 Then
                 CurrentCard.Number = 3
                 CurrentCard.Type = "4"
                 CurrentCard.imagecode = "_4C"
-            ElseIf CurrentNumber = 4 Then
+            ElseIf CurrentNumber = 43 Then
                 CurrentCard.Number = 4
                 CurrentCard.Type = "5"
                 CurrentCard.imagecode = "_5C"
-            ElseIf CurrentNumber = 5 Then
+            ElseIf CurrentNumber = 44 Then
                 CurrentCard.Number = 5
                 CurrentCard.Type = "6"
                 CurrentCard.imagecode = "_6C"
-            ElseIf CurrentNumber = 6 Then
+            ElseIf CurrentNumber = 45 Then
                 CurrentCard.Number = 6
                 CurrentCard.Type = "7"
                 CurrentCard.imagecode = "_7C"
-            ElseIf CurrentNumber = 7 Then
+            ElseIf CurrentNumber = 46 Then
                 CurrentCard.Number = 7
                 CurrentCard.Type = "8"
                 CurrentCard.imagecode = "_8C"
-            ElseIf CurrentNumber = 8 Then
+            ElseIf CurrentNumber = 47 Then
                 CurrentCard.Number = 8
                 CurrentCard.Type = "9"
                 CurrentCard.imagecode = "_9C"
-            ElseIf CurrentNumber = 9 Then
+            ElseIf CurrentNumber = 48 Then
                 CurrentCard.Number = 9
                 CurrentCard.Type = "10"
                 CurrentCard.imagecode = "_10C"
             End If
 
-        ElseIf CurrentNumber = 10 Then
+        ElseIf CurrentNumber = 49 Then
             CurrentCard.Number = 10 'set to 10 so later it can be changed to either 10 or 1 based of the users decision
             CurrentCard.Type = "A"
             CurrentCard.imagecode = "_AC"
 
-        ElseIf CurrentNumber > 10 And CurrentNumber <= 13 Then
-            If CurrentNumber = 11 Then
+        ElseIf CurrentNumber >= 50 And CurrentNumber <= 52 Then
+            If CurrentNumber = 50 Then
                 CurrentCard.Type = "J"
                 CurrentCard.imagecode = "_JC"
                 CurrentCard.Number = 10
-            ElseIf CurrentNumber = 12 Then
+            ElseIf CurrentNumber = 51 Then
                 CurrentCard.Type = "Q"
                 CurrentCard.imagecode = "_QC"
                 CurrentCard.Number = 10
-            ElseIf CurrentNumber = 13 Then
+            ElseIf CurrentNumber = 52 Then
                 CurrentCard.Type = "K"
                 CurrentCard.imagecode = "_KC"
                 CurrentCard.Number = 10
             End If
         End If
+        createPile(CurrentCard, CardPile, CurrentNumber, RandomGen, usedNums)
         Return CurrentCard
+    End Function
+
+    Private shared Function createPile(CurrentCard, CardPile, CurrentNumber, RandomGen, usedNums)
+        CardPile.Push(CurrentCard) 'adds the new card to the pile of cards
+        Return CardPile
     End Function
 End Class
 
