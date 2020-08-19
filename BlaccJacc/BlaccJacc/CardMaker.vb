@@ -26,7 +26,6 @@
             ElseIf CurrentNumber >= 40 And CurrentNumber <= 52 Then
                 CreateClubs(CurrentCard, CardPile, CurrentNumber, RandomGen, usedNums) 'call the function to generate clubs
             End If
-            Game_Form.ListBox1.Items.Add(CardPile.pop.Type)
         Next
         Return CardPile
     End Function
