@@ -15,11 +15,11 @@
         Next
     End Sub
 
-    Private Sub CmdQuit_Click(sender As Object, e As EventArgs) Handles CmdQuit.Click
-        LogIn.QuitTheGame()
-    End Sub
-
     Private Sub SetUpGame()
         Card.GenCards(CardPile, CurrentNumber, RandomGen, usedNums)
+    End Sub
+
+    Private Sub CmdQuit_Click(sender As Object, e As EventArgs) Handles CmdQuit.Click
+        LogIn.QuitTheGame()
     End Sub
 End Class
