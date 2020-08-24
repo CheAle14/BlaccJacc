@@ -45,6 +45,7 @@ Partial Class Game_Form
         Me.Player2Card3 = New System.Windows.Forms.PictureBox()
         Me.Player1Card5 = New System.Windows.Forms.PictureBox()
         Me.Player2Card5 = New System.Windows.Forms.PictureBox()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UserCard2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UserCard1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -293,12 +294,21 @@ Partial Class Game_Form
         Me.Player2Card5.TabIndex = 20
         Me.Player2Card5.TabStop = False
         '
+        'ListBox1
+        '
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.Location = New System.Drawing.Point(0, 0)
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.Size = New System.Drawing.Size(917, 628)
+        Me.ListBox1.TabIndex = 22
+        '
         'Game_Form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.ClientSize = New System.Drawing.Size(1924, 1061)
+        Me.Controls.Add(Me.ListBox1)
         Me.Controls.Add(Me.Player1Card5)
         Me.Controls.Add(Me.Player2Card5)
         Me.Controls.Add(Me.Player1Card4)
@@ -372,4 +382,5 @@ Partial Class Game_Form
     Friend WithEvents Player2Card3 As PictureBox
     Friend WithEvents Player1Card5 As PictureBox
     Friend WithEvents Player2Card5 As PictureBox
+    Friend WithEvents ListBox1 As ListBox
 End Class
