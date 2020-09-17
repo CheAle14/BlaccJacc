@@ -374,23 +374,23 @@ Public Class Game_Form
             WinningList.Add(Player2Score)
             WinningList.Add(UserScore)
             WinningList.Add(DealerScore)
-            If UserScore > Player1Score And UserScore > Player2Score And UserScore > DealerScore Then 'it only matters if the user wins or loses 
+            If UserScore < Player1Score And UserScore < Player2Score And UserScore < DealerScore Then 'it only matters if the user wins or loses 
                 UserWinner = True
-            ElseIf UserScore = WinningList.Max() Then
+            ElseIf UserScore = WinningList.Min() Then
                 UserScore = UserHand.Count
-                If Player1Score = WinningList.Max() Then
+                If Player1Score = WinningList.Min() Then
                     Player1Score = Player1Cards.Count
                 Else
                     Player1Score = 10
                 End If
 
-                If Player2Score = WinningList.Max() Then
+                If Player2Score = WinningList.Min() Then
                     Player2Score = Player2Cards.Count
                 Else
                     Player2Score = 10
                 End If
 
-                If DealerScore = WinningList.Max() Then
+                If DealerScore = WinningList.Min() Then
                     UserWinner = False
                 Else
                     DealerScore = 10
