@@ -1,8 +1,4 @@
-﻿Imports System.Security.Cryptography.X509Certificates
-Imports System.Text
-Imports Microsoft.VisualBasic.ApplicationServices
-
-Public Class Game_Form
+﻿Public Class Game_Form
     Public CardPile As New Stack(Of Card)
 
     Dim WinnerFound As Boolean = False
@@ -354,16 +350,52 @@ Public Class Game_Form
         If UserDecision = “bust” Then
             UserWinner = False
         Else
-            For x = 0 To 3
+            For x = 0 To 4
                 If Player1Bust = False Then
-                    Player1Score = Player1Cards(x).Number + Player1Cards(x + 1).Number
+                    Try
+                        Player1Score = Player1Cards(x).Number + Player1Cards(x + 1).Number
+                    Finally
+                    End Try
+                    If Player1Score > 21 Then
+                        If Player1Aces > 0 Then
+                            Player1Score = -9
+                            Player1Aces = -1
+                        End If
+                    End If
                 End If
                 If Player2Bust = False Then
-                    Player2Score = Player2Cards(x).Number + Player2Cards(x + 1).Number
+                    Try
+                        Player2Score = Player2Cards(x).Number + Player2Cards(x + 1).Number
+                    Finally
+                    End Try
+                    If Player2Score > 21 Then
+                        If Player2Aces > 0 Then
+                            Player2Score = -9
+                            Player2Aces = -1
+                        End If
+                    End If
                 End If
-                UserScore = UserCards(x).Number + UserCards(x + 1).Number
+                Try
+                    UserScore = UserCards(x).Number + UserCards(x + 1).Number
+                Finally
+                End Try
+                If UserScore > 21 Then
+                    If UserAcePlays > 0 Then
+                        UserScore = -9
+                        UserAcePlays = -1
+                    End If
+                End If
                 If DealerBust = False Then
-                    DealerScore = DealerCards(x).Number + DealerCards(x + 1).Number
+                    Try
+                        DealerScore = DealerCards(x).Number + DealerCards(x + 1).Number
+                    Catch ex As Exception
+                    End Try
+                    If DealerScore > 21 Then
+                        If DealerAces > 0 Then
+                            DealerScore = -9
+                            DealerAces = -1
+                        End If
+                    End If
                 End If
             Next
             Player1Score = 21 - Player1Score
