@@ -73,7 +73,7 @@
             For x = 0 To UserCards.Count - 1
                 UserHand(x).Hide()
             Next
-            For x = 0 To Player2Cards.Count - 1
+            For x = 0 To Player1Cards.Count - 1
                 Player1Hand(x).Hide()
             Next
             For x = 0 To DealerCards.Count - 1
