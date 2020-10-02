@@ -19,7 +19,7 @@ Public Class MainMenu
         Try
             contents = System.IO.File.ReadAllLines("scores.txt")
         Catch ex As FileNotFoundException
-            contents = {$"{Environment.UserName}:0"}
+            contents = {$"{Environment.UserName}:100"}
         End Try
         For Each line As String In contents
             line = line.TrimEnd()

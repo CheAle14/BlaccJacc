@@ -21,6 +21,7 @@
 
     Private Sub SetUpGame()
         If setupType = "initial" Then
+            PayInNum.Show()
             PayInNum.Text = "You are currently betting " & PayIn.Value & " bills"
             PayIn.Maximum = MainMenu.Score
             PayIn.TickFrequency = PayIn.Maximum / 22
@@ -151,7 +152,7 @@
         End If
         If AllPlayersDone = False Then
             If playerTurn = 1 Then
-                If UserDecision <> "Bust" Then
+                If UserDone = False Then
                     If UserDecision = "Hit" Then
                         If CardPile.Peek.Type = "A" Then
                             UserAcePlays += 1
@@ -233,7 +234,7 @@
                             playerTurn += 1
                             NextMove()
                         ElseIf Player1Cards.Count = 5 Then
-                            UserDecision = “bust” 'the user cannot win so no point trying to find the winner
+                            UserDecision = “Bust” 'the user cannot win so no point trying to find the winner
                             FindWinner()
                         Else
                             playerTurn += 1
@@ -276,7 +277,7 @@
                             playerTurn += 1
                             NextMove()
                         ElseIf Player2Cards.Count = 5 Then
-                            UserDecision = “bust” 'the user cannot win so no point trying to find the winner
+                            UserDecision = “Bust” 'the user cannot win so no point trying to find the winner
                             FindWinner()
                         Else
                             playerTurn += 1
@@ -316,7 +317,7 @@
                             DealerBust = True
                             playerTurn = 1
                         ElseIf DealerCards.Count = 5 Then
-                            UserDecision = “bust”
+                            UserDecision = “Bust”
                             FindWinner()
                         Else
                             playerTurn = 1
@@ -324,13 +325,14 @@
                     End If
                 Else
                     playerTurn = 1
+                    If UserDone = True Then
+                        NextMove()
+                    End If
                 End If
 
                 If UserDone = False Then
                     BtnHit.Show()
                     BtnStand.Show()
-                Else
-                    NextMove()
                 End If
             End If
 
@@ -347,16 +349,16 @@
         UserScore = 0
         DealerScore = 0
         Player2Score = 0
-        If UserDecision = “bust” Then
+        If UserDecision = “Bust” Then
             UserWinner = False
         Else
             For x = 0 To 4
                 If Player1Bust = False Then
                     Try
                         Player1Score = Player1Cards(x).Number + Player1Cards(x + 1).Number
-                    Finally
+                    Catch
                     End Try
-                    If Player1Score > 21 Then
+            If Player1Score > 21 Then
                         If Player1Aces > 0 Then
                             Player1Score = -9
                             Player1Aces = -1
@@ -366,7 +368,7 @@
                 If Player2Bust = False Then
                     Try
                         Player2Score = Player2Cards(x).Number + Player2Cards(x + 1).Number
-                    Finally
+                    Catch
                     End Try
                     If Player2Score > 21 Then
                         If Player2Aces > 0 Then
@@ -377,7 +379,7 @@
                 End If
                 Try
                     UserScore = UserCards(x).Number + UserCards(x + 1).Number
-                Finally
+                Catch
                 End Try
                 If UserScore > 21 Then
                     If UserAcePlays > 0 Then
@@ -388,7 +390,7 @@
                 If DealerBust = False Then
                     Try
                         DealerScore = DealerCards(x).Number + DealerCards(x + 1).Number
-                    Catch ex As Exception
+                    Catch
                     End Try
                     If DealerScore > 21 Then
                         If DealerAces > 0 Then
