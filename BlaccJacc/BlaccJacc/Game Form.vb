@@ -14,7 +14,7 @@
     Dim DealerHand As New List(Of PictureBox)
 
     Private Sub Game_Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Card.GenCards(CardPile)
+        CardPile = Card.GenCards()
         setupType = "initial"
         SetUpGame()
     End Sub
@@ -70,17 +70,10 @@
             Next
 
         ElseIf setupType = "reset" Then
-            For x = 0 To UserCards.Count - 1
-                UserHand(x).Hide()
-            Next
-            For x = 0 To Player2Cards.Count - 1
-                Player1Hand(x).Hide()
-            Next
-            For x = 0 To DealerCards.Count - 1
-                DealerHand(x).Hide()
-            Next
-            For x = 0 To Player2Cards.Count - 1
-                Player2Hand(x).Hide()
+            For Each pbList In {UserHand, Player1Hand, Player2Hand, DealerHand}
+                For x = 0 To pbList.Count
+                    pbList(x).Hide()
+                Next
             Next
             PileOfCards.Hide()
             BtnHit.Hide()
@@ -145,7 +138,7 @@
         BtnStand.Hide()
         BtnHit.Hide()
         If CardPile.Count = 0 Then
-            Card.GenCards(CardPile)
+            CardPile = Card.GenCards()
         End If
         If UserDone = True And Player1Done = True And Player2Done = True And DealerDone = True Then
             AllPlayersDone = True

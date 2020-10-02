@@ -88,7 +88,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CardMaker.vb" />
+    <Compile Include="Classes\Card.vb" />
+    <Compile Include="Classes\House.vb" />
+    <Compile Include="Classes\Number.vb" />
     <Compile Include="Game Form.Designer.vb">
       <DependentUpon>Game Form.vb</DependentUpon>
     </Compile>
